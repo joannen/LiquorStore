@@ -5,13 +5,17 @@ import java.io.Serializable;
 /**
  * Created by fredrik on 26/10/15.
  */
-public abstract class Product implements Serializable {
+public class Product extends ModelObject implements Serializable {
 
-    private final String id;
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 8256573226310050410L;
+	private final String id;
     private final String name;
     private final Double price;
 
-    public Product(Double price, String name, String id) {
+    public Product(String id, String name, Double price) {
         this.price = price;
         this.name = name;
         this.id = id;

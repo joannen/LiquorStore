@@ -10,6 +10,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
+import se.bastagruppen.webshop.model.ModelObject;
 import se.bastagruppen.webshop.model.User;
 
 public abstract class FileRepository
@@ -33,7 +34,7 @@ public abstract class FileRepository
 	}
 	
 	
-	protected void writeToDisk(List<? extends Object> list) {
+	protected void writeToDisk(List<? extends ModelObject> list) {
     	
     	try(ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream(source)))
     	{
@@ -43,7 +44,6 @@ public abstract class FileRepository
     	{
     		e.printStackTrace();
     	}
-    	
     }
 	
 	protected List<? extends Object> restoreFromDisk()
@@ -53,8 +53,8 @@ public abstract class FileRepository
 		
 			try(ObjectInputStream in = new ObjectInputStream(new FileInputStream(source)))
 			{
-				List<? extends Object> items = new ArrayList<>();
-				items = (List<? extends Object>) in.readObject();
+				List<? extends ModelObject> items = new ArrayList<>();
+				items = (List<? extends ModelObject>) in.readObject();
 				return items;
 			}
 			catch(IOException | ClassNotFoundException e)
@@ -62,7 +62,7 @@ public abstract class FileRepository
 				e.printStackTrace();
 			}
 			
-		}
+		} 
 		return new ArrayList<>();
 	}
 }

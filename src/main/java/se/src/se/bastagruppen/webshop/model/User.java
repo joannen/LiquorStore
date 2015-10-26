@@ -5,9 +5,10 @@ import java.io.Serializable;
 /**
  * Created by fredrik on 26/10/15.
  */
-public final class User implements Serializable {
+public final class User extends ModelObject implements Serializable {
 
-    private final String id;
+	private static final long serialVersionUID = 5282442438623343099L;
+	private final String id;
     private final String username;
     private final String password;
 
